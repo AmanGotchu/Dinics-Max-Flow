@@ -87,8 +87,19 @@ int maxFlow(int src, int dest, vector< vector<Edge> > &graph){
     return totalFlow;
 }
 
-
 signed main() {
-	
-	return 0;
+    int numNodes, numEdges; cin >> numNodes >> numEdges;
+
+    vector< vector<Edge> > graph(numNodes);
+    level.resize(numNodes, 0);
+    nextNodeIndex.resize(numNodes, 0);
+
+    for(int i = 0; i<numEdges; i++){
+        int a, b, w; cin >> a >> b >> w;
+        a--;
+        b--;
+        addEdge(a, b, w, graph);
+    }
+
+    cout << maxFlow(0, numNodes-1, graph) << endl;
 }
